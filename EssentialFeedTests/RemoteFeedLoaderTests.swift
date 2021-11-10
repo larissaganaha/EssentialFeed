@@ -8,20 +8,22 @@
 import XCTest
 
 class RemoteFeedLoader {
+    let client: HTTPClient  // Composition
+
+    init(client: HTTPClient) {  // Injected client dependency
+        self.client = client
+    }
     func load() {
-        HTTPClient.shared.get(from: URL(string: "http://a-url.com")!)
+        client.get(from: URL(string: "http://a-url.com")!)
     }
 }
 
-// Not a Singleton anymore
-class  HTTPClient {
-    static var shared = HTTPClient() // Global State
-
-    func get(from url: URL) {}
+protocol HTTPClient { //  shared state is no longer needed since we have the dependency injection
+    func get(from url: URL)
 }
 
-class HTTPClientSpy: HTTPClient {   // Test Type
-    override func get(from url: URL) {
+class HTTPClientSpy: HTTPClient {   // Is now a implementation of a protocol, no longer a subtype of a class
+    func get(from url: URL) {
         requestedURL = url
     }
 
@@ -31,16 +33,14 @@ class HTTPClientSpy: HTTPClient {   // Test Type
 class RemoteFeedLoaderTests: XCTestCase {
     func test_init_doesNotRequestDateFromURL() {
         let client = HTTPClientSpy()
-        HTTPClient.shared = client
-        _ = RemoteFeedLoader()
+        _ = RemoteFeedLoader(client: client)
 
         XCTAssertNil(client.requestedURL)
     }
 
     func test_load_requestDataFromURL() {
         let client = HTTPClientSpy()
-        HTTPClient.shared = client
-        let sut = RemoteFeedLoader()
+        let sut = RemoteFeedLoader(client: client)
 
         sut.load()
 
