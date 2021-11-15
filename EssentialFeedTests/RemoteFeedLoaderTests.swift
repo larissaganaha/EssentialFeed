@@ -5,25 +5,8 @@
 //  Created by Larissa Ganaha on 10/11/21.
 //
 import Foundation
+@testable import EssentialFeed
 import XCTest
-
-class RemoteFeedLoader {
-    let client: HTTPClient  // Composition
-    let url: URL
-
-    init(url: URL, client: HTTPClient) {  // Injected client dependency
-        self.url = url
-        self.client = client
-    }
-
-    func load() {
-        client.get(from: url)
-    }
-}
-
-protocol HTTPClient { //  shared state is no longer needed since we have the dependency injection
-    func get(from url: URL)
-}
 
 class RemoteFeedLoaderTests: XCTestCase {
     func test_init_doesNotRequestDateFromURL() {
