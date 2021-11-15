@@ -56,18 +56,20 @@ class RemoteFeedLoaderTests: XCTestCase {
         return (sut, client)
     }
 
-    private class HTTPClientSpy: HTTPClient {   // Is now a implementation of a protocol, no longer a subtype of a class
-        var requestedURLs = [URL]()
+    private class HTTPClientSpy: HTTPClient {
+        private var messages = [(url: URL, completion: (Error) -> Void)]()
+
+        var requestedURLs: [URL] {
+            messages.map( { $0.url })
+        }
         var error: Error?
-        var completions = [(Error) -> Void]()
 
         func get(from url: URL, completion: @escaping (Error) -> Void) {
-            completions.append(completion)
-            requestedURLs.append(url)
+            messages.append((url, completion))
         }
 
         func complete(with error: Error, at index: Int = 0) {
-            completions[index](error)
+            messages[index].completion(error)
         }
     }
 }
