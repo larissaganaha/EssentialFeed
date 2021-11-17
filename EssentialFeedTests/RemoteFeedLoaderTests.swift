@@ -4,20 +4,18 @@
 //
 //  Created by Larissa Ganaha on 10/11/21.
 //
-import Foundation
-@testable import EssentialFeed
 import XCTest
+import EssentialFeed
 
 class RemoteFeedLoaderTests: XCTestCase {
     func test_init_doesNotRequestDateFromURL() {
-        let url = URL(string: "http://a-url.com")!
-        let (_, client) = makeSUT(url: url)
+        let (_, client) = makeSUT()
 
         XCTAssertTrue(client.requestedURLs.isEmpty)
     }
 
     func test_load_requestsDataFromURL() {
-        let url = URL(string: "http://a-given-url.com")!
+        let url = URL(string: "https://a-given-url.com")!
         let (sut, client) = makeSUT(url: url)
 
         sut.load { _ in }
@@ -25,8 +23,8 @@ class RemoteFeedLoaderTests: XCTestCase {
         XCTAssertEqual(client.requestedURLs, [url])
     }
 
-    func test_loadTwice_requestsDataFromURLTwixe() {
-        let url = URL(string: "http://a-given-url.com")!
+    func test_loadTwice_requestsDataFromURLTwice() {
+        let url = URL(string: "https://a-given-url.com")!
         let (sut, client) = makeSUT(url: url)
 
         sut.load { _ in }
@@ -69,7 +67,7 @@ class RemoteFeedLoaderTests: XCTestCase {
         let (sut, client) = makeSUT()
 
         expect(sut, toCompleteWith: .success([]), when: {
-            let emptyListJSON = Data("{\"items\": []}".utf8)
+            let emptyListJSON = makeItemsJSON([])
             client.complete(withStatusCode: 200, data: emptyListJSON)
         })
     }
@@ -86,7 +84,7 @@ class RemoteFeedLoaderTests: XCTestCase {
             id: UUID(),
             description: "a description",
             location: "a location",
-            imageURL: URL(string: "http://a-url.com")!
+            imageURL: URL(string: "http://another-url.com")!
         )
 
         let items = [item1.model, item2.model]
@@ -99,9 +97,9 @@ class RemoteFeedLoaderTests: XCTestCase {
 
     // MARK: - Helpers
 
-    private func makeSUT(url: URL = URL(string: "http://a-url.com")!) -> (sut: RemoteFeedLoader, client: HTTPClientSpy) {
+    private func makeSUT(url: URL = URL(string: "https://a-url.com")!) -> (sut: RemoteFeedLoader, client: HTTPClientSpy) {
         let client = HTTPClientSpy()
-        let sut = (RemoteFeedLoader(url: url, client: client))
+        let sut = RemoteFeedLoader(url: url, client: client)
         return (sut, client)
     }
 
@@ -150,13 +148,13 @@ class RemoteFeedLoaderTests: XCTestCase {
                 statusCode: code,
                 httpVersion: nil,
                 headerFields: nil
-                )!
+            )!
             messages[index].completion(.success(data, response))
         }
     }
 
     private func makeItemsJSON(_ items: [[String: Any]]) -> Data {
-        let json = ["items": [items]]
+        let json = ["items": items]
         return try! JSONSerialization.data(withJSONObject: json)
     }
 }
