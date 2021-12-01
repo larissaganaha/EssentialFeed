@@ -28,11 +28,12 @@ class URLSessionHTTPClientTests: XCTestCase {
     func test_getFromURL_failsOnRequestError() {
         URLProtocolStub.startInterceptingRequests()
         let url = URL(string: "http://any-url.com")!
-        let error  = NSError(domain: "any error", code: 1)
+        let error = NSError(domain: "any error", code: 1)
         let sut = URLSessionHTTPClient()
         URLProtocolStub.stub(url: url, error: error)
 
         let expectation = expectation(description: "Wait for completion")
+
         sut.get(from: url) { result in
             switch result {
             case let .failure(receivedError as NSError):
@@ -62,11 +63,11 @@ class URLSessionHTTPClientTests: XCTestCase {
         }
 
         static func startInterceptingRequests() {
-            URLProtocolStub.registerClass(URLProtocolStub.self)
+            URLProtocol.registerClass(URLProtocolStub.self)
         }
 
         static func stopInterceptingRequests() {
-            URLProtocolStub.unregisterClass(URLProtocolStub.self)
+            URLProtocol.unregisterClass(URLProtocolStub.self)
             stubs = [:]
         }
 
