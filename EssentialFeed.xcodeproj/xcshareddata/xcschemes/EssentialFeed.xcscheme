@@ -39,7 +39,7 @@
          </BuildableReference>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "F4E387DB276A17C5004E497C"
+            BlueprintIdentifier = "F4E387F0276A1DD5004E497C"
             BuildableName = "EssentialFeedAPIEndToEndTests.xctest"
             BlueprintName = "EssentialFeedAPIEndToEndTests"
             ReferencedContainer = "container:EssentialFeed.xcodeproj">
@@ -71,7 +71,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "F4E387DB276A17C5004E497C"
+               BlueprintIdentifier = "F4E387F0276A1DD5004E497C"
                BuildableName = "EssentialFeedAPIEndToEndTests.xctest"
                BlueprintName = "EssentialFeedAPIEndToEndTests"
                ReferencedContainer = "container:EssentialFeed.xcodeproj">
