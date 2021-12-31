@@ -57,7 +57,7 @@ class ValidateFeedCacheUseCaseTests: XCTestCase {
         XCTAssertEqual(store.receivedMessages, [.retrieve, .deletedCacheFeed])
     }
 
-    func test_validateCache_deletesSevenDaysOldCache() {
+    func test_validateCache_deletesMoreThanSevenDaysOldCache() {
         let feed = uniqueImageFeed()
         let fixedCurrentDate = Date()
         let moreThanSevenDaysOldTimestamp = fixedCurrentDate.adding(days: -7)
