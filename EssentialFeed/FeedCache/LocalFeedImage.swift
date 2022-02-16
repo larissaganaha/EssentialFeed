@@ -1,16 +1,17 @@
 //
-//  FeedImage.swift
+//  LocalFeedItem.swift
 //  EssentialFeed
 //
-//  Created by Larissa Ganaha on 10/11/21.
+//  Created by Larissa Ganaha on 29/12/21.
 //
 
 import Foundation
 
-// Has no knowledge of the API
-public struct FeedImage: Equatable {
+// Allows object changes at their own pace for different reasons
+// Data Transfer Object Representation
+public struct LocalFeedImage: Equatable {
     public let id: UUID
-    public let description: String? 
+    public let description: String?
     public let location: String?
     public let url: URL
 
