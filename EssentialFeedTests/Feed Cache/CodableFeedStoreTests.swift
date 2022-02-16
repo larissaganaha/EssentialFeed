@@ -121,7 +121,7 @@ class CodableFeedStoreTests: XCTestCase, FailableFeedStore {
 
         insert((feed, timestamp), to: sut)
 
-        expect(sut, toRetrieve: .success(.empty))
+        expect(sut, toRetrieve: .success(.none))
     }
 
     func test_delete_deliversNoErrorOnEmptyCache() {
