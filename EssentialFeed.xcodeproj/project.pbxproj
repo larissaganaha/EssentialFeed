@@ -23,7 +23,7 @@
 		F46B5D01278F9AE100F938F7 /* ManagedCache+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46B5CFD278F9AE100F938F7 /* ManagedCache+CoreDataProperties.swift */; };
 		F4C65857273BF4CF00FC9E13 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C65856273BF4CF00FC9E13 /* AppDelegate.swift */; };
 		F4C65859273BF4CF00FC9E13 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C65858273BF4CF00FC9E13 /* SceneDelegate.swift */; };
-		F4C6585B273BF4CF00FC9E13 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C6585A273BF4CF00FC9E13 /* ViewController.swift */; };
+		F4C6585B273BF4CF00FC9E13 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C6585A273BF4CF00FC9E13 /* FeedViewController.swift */; };
 		F4C65860273BF4D100FC9E13 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4C6585F273BF4D100FC9E13 /* Assets.xcassets */; };
 		F4C65863273BF4D100FC9E13 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4C65861273BF4D100FC9E13 /* LaunchScreen.storyboard */; };
 		F4C65878273BF4D100FC9E13 /* EssentialFeedUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C65877273BF4D100FC9E13 /* EssentialFeedUITests.swift */; };
@@ -102,7 +102,7 @@
 		F4C65853273BF4CF00FC9E13 /* EssentialFeed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EssentialFeed.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4C65856273BF4CF00FC9E13 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F4C65858273BF4CF00FC9E13 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		F4C6585A273BF4CF00FC9E13 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		F4C6585A273BF4CF00FC9E13 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		F4C6585F273BF4D100FC9E13 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F4C65862273BF4D100FC9E13 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F4C65864273BF4D100FC9E13 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -225,7 +225,7 @@
 				F4E38805276A29C2004E497C /* FeedFeature */,
 				F4C65856273BF4CF00FC9E13 /* AppDelegate.swift */,
 				F4C65858273BF4CF00FC9E13 /* SceneDelegate.swift */,
-				F4C6585A273BF4CF00FC9E13 /* ViewController.swift */,
+				F4C6585A273BF4CF00FC9E13 /* FeedViewController.swift */,
 				F4C6588C273C109F00FC9E13 /* Main.storyboard */,
 				F4C6585F273BF4D100FC9E13 /* Assets.xcassets */,
 				F4C65861273BF4D100FC9E13 /* LaunchScreen.storyboard */,
@@ -558,7 +558,7 @@
 				F46B5CFF278F9AE100F938F7 /* ManagedFeedImage+CoreDataProperties.swift in Sources */,
 				F4E38820276A2E62004E497C /* HTTPClient.swift in Sources */,
 				F4E3881F276A2E5F004E497C /* FeedItemsMapper.swift in Sources */,
-				F4C6585B273BF4CF00FC9E13 /* ViewController.swift in Sources */,
+				F4C6585B273BF4CF00FC9E13 /* FeedViewController.swift in Sources */,
 				F46B5D01278F9AE100F938F7 /* ManagedCache+CoreDataProperties.swift in Sources */,
 				F4C65857273BF4CF00FC9E13 /* AppDelegate.swift in Sources */,
 				F4C65859273BF4CF00FC9E13 /* SceneDelegate.swift in Sources */,
