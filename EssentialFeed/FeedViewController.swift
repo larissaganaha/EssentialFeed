@@ -5,6 +5,7 @@
 //  Created by Larissa Ganaha on 10/11/21.
 //
 
+import Foundation
 import UIKit
 
 struct FeedImageViewModel {
@@ -15,11 +16,28 @@ struct FeedImageViewModel {
 
 class FeedViewController: UITableViewController {
 
-    private let feed = FeedImageViewModel.prototypeFeed
+    private var feed = [FeedImageViewModel]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        refresh()
+        tableView.setContentOffset(.init(x: 0, y: -tableView.contentInset.top), animated: true)
+    }
+
+    @IBAction func refresh() {
+        refreshControl?.beginRefreshing()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+            if self.feed.isEmpty {
+                self.feed = FeedImageViewModel.prototypeFeed
+                self.tableView.reloadData()
+            }
+            self.refreshControl?.endRefreshing()
+        }
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
