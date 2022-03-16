@@ -34,14 +34,13 @@ class FeedViewController: UITableViewController {
     @objc private func load() {
         refreshControl?.beginRefreshing()
         loader?.load { [weak self] result in
-            switch result {
-            case let .success(feed):
+            // Switch block is not needed since we don't care about the failure case. Use if let try  approach
+            //  case .failure: break
+            if let feed = try? result.get() {
                 self?.tableModel = feed
                 self?.tableView.reloadData()
-                self?.refreshControl?.endRefreshing()
-            case .failure:
-                break
             }
+            self?.refreshControl?.endRefreshing()
         }
     }
 
