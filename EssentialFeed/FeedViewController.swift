@@ -14,14 +14,20 @@ struct FeedImageViewModel {
     let imageName: String
 }
 
+public protocol FeedImageDataLoader {
+    func loadImageData(from url: URL)
+}
+
 class FeedViewController: UITableViewController {
     private var tableModel = [FeedImage]()
     private var feed = [FeedImageViewModel]()
-    private var loader: FeedLoader?
+    private var feedLoader: FeedLoader?
+    private var imageLoader: FeedImageDataLoader?
 
-    convenience init(loader: FeedLoader) {
+    convenience init(feedLoader: FeedLoader, imageLoader: FeedImageDataLoader) {
         self.init()
-        self.loader = loader
+        self.feedLoader = feedLoader
+        self.imageLoader = imageLoader
     }
 
     override func viewDidLoad() {
@@ -33,7 +39,7 @@ class FeedViewController: UITableViewController {
 
     @objc private func load() {
         refreshControl?.beginRefreshing()
-        loader?.load { [weak self] result in
+        feedLoader?.load { [weak self] result in
             // Switch block is not needed since we don't care about the failure case. Use if let try  approach
             //  case .failure: break
             if let feed = try? result.get() {
@@ -71,6 +77,7 @@ class FeedViewController: UITableViewController {
         cell.locationContainer.isHidden = (cellModel.location == nil)
         cell.locationLabel.text = cellModel.location
         cell.descriptionLabel.text = cellModel.description
+        imageLoader?.loadImageData(from: cellModel.url)
         return cell
     }
 }
