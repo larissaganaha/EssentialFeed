@@ -15,7 +15,7 @@ struct FeedImageViewModel {
 }
 
 class FeedViewController: UITableViewController {
-
+    private var tableModel = [FeedImage]()
     private var feed = [FeedImageViewModel]()
     private var loader: FeedLoader?
 
@@ -33,7 +33,9 @@ class FeedViewController: UITableViewController {
 
     @objc private func load() {
         refreshControl?.beginRefreshing()
-        loader?.load { [weak self] _ in
+        loader?.load { [weak self] result in
+            self?.tableModel = (try? result.get()) ?? []
+            self?.tableView.reloadData()
             self?.refreshControl?.endRefreshing()
         }
     }
@@ -56,12 +58,15 @@ class FeedViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        feed.count
+        tableModel.count
     }
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "FeedImageCell", for: indexPath) as! FeedImageCell
-        let model = feed[indexPath.row]
-        cell.configure(with: model)
+
+    public override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cellModel = tableModel[indexPath.row]
+        let cell = FeedImageCell()
+        cell.locationContainer.isHidden = (cellModel.location == nil)
+        cell.locationLabel.text = cellModel.location
+        cell.descriptionLabel.text = cellModel.description
         return cell
     }
 }
