@@ -3,7 +3,7 @@ import UIKit
 class FeedImageCell: UITableViewCell {
     @IBOutlet private(set) var locationContainer2: UIView!
     @IBOutlet private(set) var locationLabel2: UILabel!
-    @IBOutlet private(set) var feedImageView: UIImageView!
+    @IBOutlet private(set) var feedImageView2: UIImageView!
     @IBOutlet private(set) var descriptionLabel2: UILabel!
     @IBOutlet private(set) var feedImageContainer2: UIView!
 
@@ -11,6 +11,7 @@ class FeedImageCell: UITableViewCell {
     public let locationLabel = UILabel()
     public let descriptionLabel = UILabel()
     public let feedImageContainer = UIView()
+    public let feedImageView = UIImageView()
 
     override func awakeFromNib() {
         super.awakeFromNib()
