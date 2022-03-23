@@ -234,15 +234,13 @@
 		F4C65855273BF4CF00FC9E13 /* EssentialFeed */ = {
 			isa = PBXGroup;
 			children = (
+				F4DFCF4927EB51E9007E4F1F /* FeedUI */,
 				F4C77E29277CB5AE00C3A0CD /* FeedCache */,
 				F4E38806276A29EF004E497C /* FeedAPI */,
 				F4E38805276A29C2004E497C /* FeedFeature */,
 				F4C65856273BF4CF00FC9E13 /* AppDelegate.swift */,
 				F4C65858273BF4CF00FC9E13 /* SceneDelegate.swift */,
-				F4C6585A273BF4CF00FC9E13 /* FeedViewController.swift */,
 				F405211927C688490071A62C /* FeedImageViewModel+PrototypeData.swift */,
-				F49BDF8327E2213D0040FE06 /* UIView+Shimmering.swift */,
-				F405211B27C6892E0071A62C /* FeedImageCell.swift */,
 				F4C6588C273C109F00FC9E13 /* Main.storyboard */,
 				F4C6585F273BF4D100FC9E13 /* Assets.xcassets */,
 				F4C65861273BF4D100FC9E13 /* LaunchScreen.storyboard */,
@@ -308,6 +306,32 @@
 				F4C77E39277F959400C3A0CD /* FeedCacheTestHelpers.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		F4DFCF4927EB51E9007E4F1F /* FeedUI */ = {
+			isa = PBXGroup;
+			children = (
+				F4DFCF4B27EB51F6007E4F1F /* Views */,
+				F4DFCF4A27EB51EE007E4F1F /* Controllers */,
+			);
+			path = FeedUI;
+			sourceTree = "<group>";
+		};
+		F4DFCF4A27EB51EE007E4F1F /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				F4C6585A273BF4CF00FC9E13 /* FeedViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		F4DFCF4B27EB51F6007E4F1F /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F49BDF8327E2213D0040FE06 /* UIView+Shimmering.swift */,
+				F405211B27C6892E0071A62C /* FeedImageCell.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		F4E387F2276A1DD5004E497C /* EssentialFeedAPIEndToEndTests */ = {
