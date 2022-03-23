@@ -23,7 +23,7 @@ public protocol FeedImageDataLoader {
 
     func loadImageData(from url: URL, completion: @escaping (Result) -> Void) -> FeedImageDataLoaderTask}
 
-class FeedViewController: UITableViewController, UITableViewDataSourcePrefetching {
+public final class FeedViewController: UITableViewController, UITableViewDataSourcePrefetching {
     private var tableModel = [FeedImage]()
     private var feed = [FeedImageViewModel]()
     private var feedLoader: FeedLoader?
