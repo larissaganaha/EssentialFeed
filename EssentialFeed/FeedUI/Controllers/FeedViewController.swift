@@ -14,15 +14,6 @@ struct FeedImageViewModel {
     let imageName: String
 }
 
-public protocol FeedImageDataLoaderTask {
-    func cancel()
-}
-
-public protocol FeedImageDataLoader {
-    typealias Result = Swift.Result<Data, Error>
-
-    func loadImageData(from url: URL, completion: @escaping (Result) -> Void) -> FeedImageDataLoaderTask}
-
 public final class FeedViewController: UITableViewController, UITableViewDataSourcePrefetching {
     private var tableModel = [FeedImage]()
     private var feed = [FeedImageViewModel]()
@@ -36,7 +27,7 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
         self.imageLoader = imageLoader
     }
 
-    override func viewDidLoad() {
+    public override func viewDidLoad() {
         super.viewDidLoad()
         refreshControl = UIRefreshControl()
         refreshControl?.addTarget(self, action: #selector(load), for: .valueChanged)
@@ -57,7 +48,7 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
         }
     }
 
-    override func viewWillAppear(_ animated: Bool) {
+    public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         refresh()
         tableView.setContentOffset(.init(x: 0, y: -tableView.contentInset.top), animated: true)
@@ -74,7 +65,7 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
         }
     }
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    public override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         tableModel.count
     }
 
