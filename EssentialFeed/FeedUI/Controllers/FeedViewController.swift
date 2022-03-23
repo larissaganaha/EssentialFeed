@@ -15,37 +15,29 @@ struct FeedImageViewModel {
 }
 
 public final class FeedViewController: UITableViewController, UITableViewDataSourcePrefetching {
-    private var tableModel = [FeedImage]()
     private var feed = [FeedImageViewModel]()
-    private var feedLoader: FeedLoader?
+    private var refreshController: FeedRefreshViewController?
     private var imageLoader: FeedImageDataLoader?
     private var tasks = [IndexPath: FeedImageDataLoaderTask]()
 
+    private var tableModel = [FeedImage]() {
+        didSet { tableView.reloadData() }
+    }
+    
     convenience init(feedLoader: FeedLoader, imageLoader: FeedImageDataLoader) {
         self.init()
-        self.feedLoader = feedLoader
+        self.refreshController = FeedRefreshViewController(feedLoader: feedLoader)
         self.imageLoader = imageLoader
     }
 
     public override func viewDidLoad() {
         super.viewDidLoad()
-        refreshControl = UIRefreshControl()
-        refreshControl?.addTarget(self, action: #selector(load), for: .valueChanged)
-        tableView.prefetchDataSource = self
-        load()
-    }
-
-    @objc private func load() {
-        refreshControl?.beginRefreshing()
-        feedLoader?.load { [weak self] result in
-            // Switch block is not needed since we don't care about the failure case. Use if let try  approach
-            //  case .failure: break
-            if let feed = try? result.get() {
-                self?.tableModel = feed
-                self?.tableView.reloadData()
-            }
-            self?.refreshControl?.endRefreshing()
+        refreshControl = refreshController?.view
+        refreshController?.onRefresh = { [weak self] feed in
+             self?.tableModel = feed
         }
+        tableView.prefetchDataSource = self
+        refreshController?.refresh()
     }
 
     public override func viewWillAppear(_ animated: Bool) {
