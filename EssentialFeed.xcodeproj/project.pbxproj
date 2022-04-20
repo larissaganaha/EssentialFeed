@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4257C3892810480500FDE7E4 /* FeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4257C3882810480500FDE7E4 /* FeedViewModel.swift */; };
+		4257C38B28104D5800FDE7E4 /* FeedImageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4257C38A28104D5800FDE7E4 /* FeedImageViewModel.swift */; };
 		F405211A27C688490071A62C /* FeedImageViewModel+PrototypeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F405211927C688490071A62C /* FeedImageViewModel+PrototypeData.swift */; };
 		F405211C27C6892E0071A62C /* FeedImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F405211B27C6892E0071A62C /* FeedImageCell.swift */; };
 		F40ACEFE2795C706000B9767 /* EssentialFeedCacheIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F40ACEFD2795C706000B9767 /* EssentialFeedCacheIntegrationTests.swift */; };
@@ -103,6 +104,7 @@
 
 /* Begin PBXFileReference section */
 		4257C3882810480500FDE7E4 /* FeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewModel.swift; sourceTree = "<group>"; };
+		4257C38A28104D5800FDE7E4 /* FeedImageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedImageViewModel.swift; sourceTree = "<group>"; };
 		F405211927C688490071A62C /* FeedImageViewModel+PrototypeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FeedImageViewModel+PrototypeData.swift"; sourceTree = "<group>"; };
 		F405211B27C6892E0071A62C /* FeedImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedImageCell.swift; sourceTree = "<group>"; };
 		F40ACEFB2795C706000B9767 /* EssentialFeedCacheIntegrationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EssentialFeedCacheIntegrationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -212,6 +214,7 @@
 			isa = PBXGroup;
 			children = (
 				4257C3882810480500FDE7E4 /* FeedViewModel.swift */,
+				4257C38A28104D5800FDE7E4 /* FeedImageViewModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -654,6 +657,7 @@
 				F4DFCF5C27EB5C10007E4F1F /* FeedImageCellController.swift in Sources */,
 				F44FBC26278F385F00F5EF45 /* FeedStore.xcdatamodeld in Sources */,
 				F4DFCF5F27EB6064007E4F1F /* FeedUIComposer.swift in Sources */,
+				4257C38B28104D5800FDE7E4 /* FeedImageViewModel.swift in Sources */,
 				F44FBC23278F270E00F5EF45 /* CoreDataFeedStore.swift in Sources */,
 				F4E38823276A2E69004E497C /* FeedItem.swift in Sources */,
 				4257C3892810480500FDE7E4 /* FeedViewModel.swift in Sources */,
