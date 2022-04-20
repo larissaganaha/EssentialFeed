@@ -23,14 +23,17 @@ public final class FeedUIComposer {
     }
 }
 
+// Move Memory Management to the Composition layer
 private final class WeakRefVirtualProxy<T: AnyObject> {
-    private weak var object: T?
+    private weak var object: T? // Virtual Proxy holds a weak reference to the object instance and forwards all receive messages to the object reference.
 
     init(_ object: T) {
         self.object = object
     }
 }
 
+// By using conditional conformance, we can make the Virtual Proxy conform to protocols only when the object type it holds also conform to the protocol. This way, we can safely forward the messages to the weak instance reference with compile-time guarantees.
+// Instead of making the view property weak in the Presenter, we can weakify the View reference in the Composition layer with the WeakRefVirtualProxy.
 extension WeakRefVirtualProxy: FeedLoadingView where T: FeedLoadingView {
     func display(_ viewModel: FeedLoadingViewModel) {
         object?.display(viewModel)
