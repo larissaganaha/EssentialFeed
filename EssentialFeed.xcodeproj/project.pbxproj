@@ -213,10 +213,17 @@
 		4257C3872810472200FDE7E4 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		4257C38C2810573F00FDE7E4 /* FeedPresentation */ = {
+			isa = PBXGroup;
+			children = (
 				4257C3882810480500FDE7E4 /* FeedViewModel.swift */,
 				4257C38A28104D5800FDE7E4 /* FeedImageViewModel.swift */,
 			);
-			path = Models;
+			path = FeedPresentation;
 			sourceTree = "<group>";
 		};
 		F40ACEFC2795C706000B9767 /* EssentialFeedCacheIntegrationTests */ = {
@@ -265,6 +272,7 @@
 		F4C65855273BF4CF00FC9E13 /* EssentialFeed */ = {
 			isa = PBXGroup;
 			children = (
+				4257C38C2810573F00FDE7E4 /* FeedPresentation */,
 				F4DFCF5627EB564F007E4F1F /* FeedImageLoader */,
 				F4DFCF4927EB51E9007E4F1F /* FeedUI */,
 				F4C77E29277CB5AE00C3A0CD /* FeedCache */,
