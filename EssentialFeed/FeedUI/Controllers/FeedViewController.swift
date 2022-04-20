@@ -8,14 +8,14 @@
 import Foundation
 import UIKit
 
-struct FeedImageViewModel {
+struct FeedImageUIViewModel {
     let description: String?
     let location: String?
     let imageName: String
 }
 
 public final class FeedViewController: UITableViewController, UITableViewDataSourcePrefetching {
-    private var feed = [FeedImageViewModel]()
+    private var feed = [FeedImageUIViewModel]()
     private var refreshController: FeedRefreshViewController?
 
     var tableModel = [FeedImageCellController]() {
@@ -44,7 +44,7 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
         refreshControl?.beginRefreshing()
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
             if self.feed.isEmpty {
-                self.feed = FeedImageViewModel.prototypeFeed
+                self.feed = FeedImageUIViewModel.prototypeFeed
                 self.tableView.reloadData()
             }
             self.refreshControl?.endRefreshing()
@@ -83,7 +83,7 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
 }
 
 extension FeedImageCell {
-    func configure(with model: FeedImageViewModel) {
+    func configure(with model: FeedImageUIViewModel) {
         locationLabel.text = model.location
         locationContainer.isHidden = model.location == nil
 
